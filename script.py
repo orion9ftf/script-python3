@@ -29,3 +29,7 @@ else:
   exit(1)
 
 # configurar los parámetros de conexión y archivos:
+server_ftp = ip_victim
+local_file = 'clean.sh'
+remote_file = 'script/clean.sh'
+
