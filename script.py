@@ -33,3 +33,5 @@ server_ftp = ip_victim
 local_file = 'clean.sh'
 remote_file = 'script/clean.sh'
 
+# llamar a la función para subir el archivo:
+upload_the_file_to_the_server(server_ftp, local_file, remote_file)
