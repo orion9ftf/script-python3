@@ -46,3 +46,15 @@ remote_file = 'script/clean.sh' #ruta donde se subirá el archivo a la máquina 
 
 # llamar a la función para subir el archivo:
 upload_the_file_to_the_server(server_ftp, local_file, remote_file)
+
+
+#llamar a la función -> enviar un puerto:
+def start_port_listening(port):
+  try:
+    output = os.system(f'nc -nlvp {port}')
+    print(f'Escucha en el puerto {port} iniciando correctamente')
+    print(output)
+  except:
+    print(f"Error al iniciar la escucha en el puerto {port} ")
+
+start_port_listening(443) # con netcat para abrir puertos
